@@ -90,7 +90,7 @@ open class SVGAImageView @JvmOverloads constructor(context: Context, attrs: Attr
                 ref.get()?.startAnimation(videoItem)
             }
 
-            override fun onError() {}
+            override fun onError(error: String) {}
         }
     }
 
@@ -120,7 +120,8 @@ open class SVGAImageView @JvmOverloads constructor(context: Context, attrs: Attr
         setupDrawable()
         mStartFrame = Math.max(0, range?.location ?: 0)
         val videoItem = drawable.videoItem
-        mEndFrame = Math.min(videoItem.frames - 1, ((range?.location ?: 0) + (range?.length ?: Int.MAX_VALUE) - 1))
+        mEndFrame = Math.min(videoItem.frames - 1, ((range?.location ?: 0) + (range?.length
+                ?: Int.MAX_VALUE) - 1))
         val animator = ValueAnimator.ofInt(mStartFrame, mEndFrame)
         animator.interpolator = LinearInterpolator()
         animator.duration = ((mEndFrame - mStartFrame + 1) * (1000 / videoItem.FPS) / generateScale()).toLong()
@@ -153,9 +154,10 @@ open class SVGAImageView @JvmOverloads constructor(context: Context, attrs: Attr
             val getMethod = animatorClass.getDeclaredMethod("getDurationScale") ?: return scale
             scale = (getMethod.invoke(animatorClass) as Float).toDouble()
             if (scale == 0.0) {
-                val setMethod = animatorClass.getDeclaredMethod("setDurationScale",Float::class.java) ?: return scale
+                val setMethod = animatorClass.getDeclaredMethod("setDurationScale", Float::class.java)
+                        ?: return scale
                 setMethod.isAccessible = true
-                setMethod.invoke(animatorClass,1.0f)
+                setMethod.invoke(animatorClass, 1.0f)
                 scale = 1.0
                 LogUtils.info(TAG,
                         "The animation duration scale has been reset to" +
@@ -250,7 +252,7 @@ open class SVGAImageView @JvmOverloads constructor(context: Context, attrs: Attr
         stepToFrame(frame, andPlay)
     }
 
-    fun setOnAnimKeyClickListener(clickListener : SVGAClickAreaListener){
+    fun setOnAnimKeyClickListener(clickListener: SVGAClickAreaListener) {
         mItemClickAreaListener = clickListener
     }
 

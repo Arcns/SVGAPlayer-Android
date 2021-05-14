@@ -42,7 +42,7 @@ public class AnimationWithDynamicImageActivity extends Activity {
                     animationView.startAnimation();
                 }
                 @Override
-                public void onError() {
+                public void onError(String error) {
 
                 }
             });

@@ -48,7 +48,7 @@ public class AnimationFromAssetsActivity extends Activity {
             }
 
             @Override
-            public void onError() {
+            public void onError(String error) {
 
             }
         });

@@ -39,7 +39,7 @@ class SVGAParser(context: Context?) {
 
     interface ParseCompletion {
         fun onComplete(videoItem: SVGAVideoEntity)
-        fun onError()
+        fun onError(error: String)
     }
 
     open class FileDownloader {
@@ -374,7 +374,7 @@ class SVGAParser(context: Context?) {
         LogUtils.error(TAG, "================ parser error ================")
         LogUtils.error(TAG, "error", e)
         Handler(Looper.getMainLooper()).post {
-            callback?.onError()
+            callback?.onError(e.message ?: "error")
         }
     }
 
