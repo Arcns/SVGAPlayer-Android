@@ -1,4 +1,4 @@
-[![](https://www.jitpack.io/v/Arcns/AllAngleExpandableButton.svg)](https://www.jitpack.io/#Arcns/AllAngleExpandableButton)
+[![](https://www.jitpack.io/v/Arcns/SVGAPlayer-Android.svg)](https://www.jitpack.io/#Arcns/SVGAPlayer-Android)
 
 ### 感谢svga！相比[svga/SVGAPlayer-Android](https://github.com/svga/SVGAPlayer-Android) ,根据我的实际需求做了以下修改：
 ```
