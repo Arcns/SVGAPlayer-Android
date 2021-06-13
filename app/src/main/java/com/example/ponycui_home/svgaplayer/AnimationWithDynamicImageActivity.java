@@ -9,6 +9,7 @@ import com.opensource.svgaplayer.SVGADrawable;
 import com.opensource.svgaplayer.SVGADynamicEntity;
 import com.opensource.svgaplayer.SVGAImageView;
 import com.opensource.svgaplayer.SVGAParser;
+import com.opensource.svgaplayer.SVGASoundManager;
 import com.opensource.svgaplayer.SVGAVideoEntity;
 
 import org.jetbrains.annotations.NotNull;
@@ -23,6 +24,7 @@ public class AnimationWithDynamicImageActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SVGASoundManager.get().init();
         animationView = new SVGAImageView(this);
         animationView.setBackgroundColor(Color.GRAY);
         loadAnimation();
@@ -49,6 +51,11 @@ public class AnimationWithDynamicImageActivity extends Activity {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
+        SVGASoundManager.get().release();
     }
 
 }

@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.opensource.svgaplayer.SVGAImageView;
 import com.opensource.svgaplayer.SVGAParser;
+import com.opensource.svgaplayer.SVGASoundManager;
 import com.opensource.svgaplayer.SVGAVideoEntity;
 
 import org.jetbrains.annotations.NotNull;
@@ -23,6 +24,7 @@ public class AnimationFromAssetsActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SVGASoundManager.get().init();
         animationView = new SVGAImageView(this);
         animationView.setBackgroundColor(Color.BLACK);
         animationView.setOnClickListener(new View.OnClickListener() {
@@ -78,4 +80,9 @@ public class AnimationFromAssetsActivity extends Activity {
         return samples.get((int) Math.floor(Math.random() * samples.size()));
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SVGASoundManager.get().release();
+    }
 }
