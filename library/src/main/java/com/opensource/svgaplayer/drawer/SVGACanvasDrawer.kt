@@ -157,7 +157,7 @@ internal class SVGACanvasDrawer(videoItem: SVGAVideoEntity, val dynamicItem: SVG
 
     private fun playAudio(frameIndex: Int) {
         this.videoItem.audioList.forEach { audio ->
-            if (audio.startFrame == frameIndex) {
+            if (audio.startFrame == frameIndex && enableSVGASound) {
                 if (SVGASoundManager.get().isInit()){
                     audio.soundID?.let {soundID ->
                         audio.playID = SVGASoundManager.get().play(soundID, 1.0f, 1.0f, 1, 0, 1.0f)

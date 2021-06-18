@@ -132,7 +132,8 @@ class SVGAParser(context: Context?) {
 
     fun decodeFromAssets(name: String, callback: ParseCompletion?) {
         if (mContext == null) {
-            LogUtils.error(TAG, "在配置 SVGAParser context 前, 无法解析 SVGA 文件。")
+//            LogUtils.error(TAG, "在配置 SVGAParser context 前, 无法解析 SVGA 文件。")
+            this.invokeErrorCallback(java.lang.Exception("在配置 SVGAParser context 前, 无法解析 SVGA 文件。"), callback)
             return
         }
         try {
@@ -149,7 +150,8 @@ class SVGAParser(context: Context?) {
 
     fun decodeFromURL(url: URL, callback: ParseCompletion?): (() -> Unit)? {
         if (mContext == null) {
-            LogUtils.error(TAG, "在配置 SVGAParser context 前, 无法解析 SVGA 文件。")
+//            LogUtils.error(TAG, "在配置 SVGAParser context 前, 无法解析 SVGA 文件。")
+            this.invokeErrorCallback(java.lang.Exception("在配置 SVGAParser context 前, 无法解析 SVGA 文件。"), callback)
             return null
         }
         LogUtils.info(TAG, "================ decode from url ================")
@@ -282,7 +284,8 @@ class SVGAParser(context: Context?) {
             closeInputStream: Boolean = false
     ) {
         if (mContext == null) {
-            LogUtils.error(TAG, "在配置 SVGAParser context 前, 无法解析 SVGA 文件。")
+//            LogUtils.error(TAG, "在配置 SVGAParser context 前, 无法解析 SVGA 文件。")
+            this.invokeErrorCallback(java.lang.Exception("在配置 SVGAParser context 前, 无法解析 SVGA 文件。"), callback)
             return
         }
         LogUtils.info(TAG, "================ decode from input stream ================")
@@ -382,7 +385,8 @@ class SVGAParser(context: Context?) {
         LogUtils.info(TAG, "================ decode from cache ================")
         LogUtils.debug(TAG, "decodeFromCacheKey called with cacheKey : $cacheKey")
         if (mContext == null) {
-            LogUtils.error(TAG, "在配置 SVGAParser context 前, 无法解析 SVGA 文件。")
+//            LogUtils.error(TAG, "在配置 SVGAParser context 前, 无法解析 SVGA 文件。")
+            this.invokeErrorCallback(java.lang.Exception("在配置 SVGAParser context 前, 无法解析 SVGA 文件。"), callback)
             return
         }
         try {
